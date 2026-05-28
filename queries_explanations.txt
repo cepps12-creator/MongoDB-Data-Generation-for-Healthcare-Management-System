@@ -1,0 +1,632 @@
+Q1
+myDB> db.Doctors.find ({},{_id:0, name:1, specialty:1})
+[
+  { name: 'Paul Garcia', specialty: 'Oncology' },
+  { name: 'Samantha Mason', specialty: 'Neurology' },
+  { name: 'Michelle Tate', specialty: 'Cardiology' },
+  { name: 'Ashley Jackson', specialty: 'Oncology' },
+  { name: 'Ricardo Callahan', specialty: 'Pediatrics' },
+  { name: 'Stephanie Jones', specialty: 'Pediatrics' },
+  { name: 'Paul Moyer', specialty: 'Cardiology' },
+  { name: 'Robert Sanchez', specialty: 'Oncology' },
+  { name: 'John Johnson', specialty: 'Cardiology' },
+  { name: 'Michael Brewer', specialty: 'Dermatology' },
+  { name: 'Nicole Mills', specialty: 'Dermatology' },
+  { name: 'Stephanie Arias', specialty: 'Orthopedics' },
+  { name: 'Mark Johnson', specialty: 'General Medicine' },
+  { name: 'Hannah Davis', specialty: 'Dermatology' },
+  { name: 'Elizabeth Martinez', specialty: 'Pediatrics' },
+  { name: 'Michael Cook', specialty: 'General Medicine' },
+  { name: 'Jennifer Schultz', specialty: 'Pediatrics' },
+  { name: 'Kimberly Barry', specialty: 'General Medicine' },
+  { name: 'Carolyn Valdez', specialty: 'Neurology' },
+  { name: 'Terry Crawford', specialty: 'Pediatrics' }
+]
+Type "it" for more
+
+Q2
+myDB> db.Patients.find(
+|   { gender: "Female", age: { $lt: 30 } },
+|   { _id: 0, name: 1, age: 1 }
+| )
+[
+  { name: 'Kimberly Anderson', age: 27 },
+  { name: 'James Lopez', age: 10 },
+  { name: 'Michael Avila', age: 2 },
+  { name: 'Lisa Green', age: 4 },
+  { name: 'Douglas Hawkins', age: 7 },
+  { name: 'Joseph Nelson', age: 3 },
+  { name: 'Joshua Wagner', age: 4 },
+  { name: 'Austin Smith', age: 11 },
+  { name: 'Michelle Nguyen', age: 18 },
+  { name: 'Catherine Stewart', age: 17 },
+  { name: 'Sarah Davis', age: 17 },
+  { name: 'Charles Carr', age: 3 },
+  { name: 'Alexis French', age: 8 },
+  { name: 'Michael Johnson', age: 27 },
+  { name: 'Mr. Andrew Ross', age: 1 },
+  { name: 'Andrew Lucas MD', age: 22 },
+  { name: 'Michelle Davis', age: 4 },
+  { name: 'Erik Kelley', age: 1 },
+  { name: 'Gregory Lynch', age: 11 },
+  { name: 'Bethany Maldonado', age: 1 }
+]
+
+Q3 
+myDB> db.Appointments.find(
+|   { status: { $in: ["Scheduled", "Pending"] } },
+|   { _id: 0, appointment_id: 1, status: 1 }
+| )
+[
+  {
+    appointment_id: UUID('dbc1a677-f26d-48ce-b961-d3da057a846b'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('f524f628-44af-4c91-b3b3-3b5d1db8b16b'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('24f15b9f-30ee-4427-aa00-a49b9bedb58e'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('8d14e989-e092-4e66-96ff-3dd2eff2e584'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('7b09952c-32ce-49ed-bc34-a37d73f6d534'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('066fec88-3195-42b1-a743-cbe3a5041f65'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('9a1f63b2-9c6c-4881-9875-387d4134fb23'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('e1cd75b5-b294-4a0c-8969-fa665a31de6a'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('d1af7dda-3952-4d19-994e-af380782d62a'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('78966fee-c286-4eb5-b5b3-b3c3176df994'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('4538a102-afc1-46f5-9306-0f79d40ef69e'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('52ccf6d3-d518-464e-a5cc-d2409ff0b621'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('5921e95c-198d-4661-9857-1f29b7642665'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('69d28251-0b52-4707-932a-774f3c8d58c6'),
+    status: 'Scheduled'
+  },
+  {
+    appointment_id: UUID('e072e656-a44a-443e-9e31-edcf9121ca15'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('5b9fd428-df18-4f3c-803f-11fb7e36261e'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('6071288a-252e-4344-99aa-52a8265e610b'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('93a1b2cb-b80b-427e-b962-0fcbc9ff36ad'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('0e4f1d47-d9a0-464e-939b-27119e2fa186'),
+    status: 'Pending'
+  },
+  {
+    appointment_id: UUID('0d8e879d-be7d-4254-95d5-710a66852afa'),
+    status: 'Pending'
+  }
+]
+
+Q4
+myDB> db.Doctors.find(
+|   {
+|     specialty: { $in: ["Cardiology", "Oncology"] },
+|     experience_years: { $gte: 10 }
+|   },
+|   { _id: 0, name: 1, specialty: 1, experience_years: 1 }
+| )
+[
+  {
+    name: 'Michelle Tate',
+    specialty: 'Cardiology',
+    experience_years: 40
+  },
+  { name: 'Ashley Jackson', specialty: 'Oncology', experience_years: 30 },
+  { name: 'Paul Moyer', specialty: 'Cardiology', experience_years: 19 },
+  { name: 'Robert Sanchez', specialty: 'Oncology', experience_years: 14 },
+  { name: 'John Johnson', specialty: 'Cardiology', experience_years: 25 },
+  {
+    name: 'Dr. Mary Peterson',
+    specialty: 'Cardiology',
+    experience_years: 35
+  },
+  { name: 'Roy Nelson', specialty: 'Oncology', experience_years: 40 },
+  { name: 'Matthew Hurst', specialty: 'Oncology', experience_years: 25 },
+  {
+    name: 'Jorge Schneider',
+    specialty: 'Oncology',
+    experience_years: 38
+  },
+  { name: 'Darius Reid', specialty: 'Cardiology', experience_years: 39 },
+  { name: 'Glenn Nguyen', specialty: 'Cardiology', experience_years: 25 },
+  {
+    name: 'Brandon Carson',
+    specialty: 'Cardiology',
+    experience_years: 23
+  },
+  { name: 'Sandy Stewart', specialty: 'Oncology', experience_years: 18 },
+  {
+    name: 'Andrew Armstrong',
+    specialty: 'Cardiology',
+    experience_years: 12
+  },
+  { name: 'Terri Allen', specialty: 'Cardiology', experience_years: 11 },
+  { name: 'Richard Rowe', specialty: 'Oncology', experience_years: 18 },
+  {
+    name: 'Christopher Robinson',
+    specialty: 'Cardiology',
+    experience_years: 29
+  },
+  {
+    name: 'Shelley White',
+    specialty: 'Cardiology',
+    experience_years: 40
+  },
+  {
+    name: 'Deborah Wright',
+    specialty: 'Cardiology',
+    experience_years: 21
+  },
+  {
+    name: 'Kathryn Perez',
+    specialty: 'Cardiology',
+    experience_years: 12
+  }
+]
+Type "it" for more
+
+Q5
+myDB> db.Patients.find(
+|   {
+|     $or: [
+|       { age: { $gte: 65 } },
+|       { age: { $lte: 12 } }
+|     ],
+|     gender: "Female"
+|   },
+|   { _id: 0, name: 1, age: 1 }
+| )
+[
+  { name: 'Peter Brown', age: 82 },
+  { name: 'James Lopez', age: 10 },
+  { name: 'Michael Avila', age: 2 },
+  { name: 'Steven Padilla', age: 80 },
+  { name: 'Lisa Green', age: 4 },
+  { name: 'Laura Ray', age: 81 },
+  { name: 'Douglas Hawkins', age: 7 },
+  { name: 'Joseph Nelson', age: 3 },
+  { name: 'Joshua Wagner', age: 4 },
+  { name: 'Austin Smith', age: 11 },
+  { name: 'Paula Ho', age: 82 },
+  { name: 'Kevin Green', age: 71 },
+  { name: 'Jesse James', age: 66 },
+  { name: 'Charles Carr', age: 3 },
+  { name: 'Lawrence Doyle', age: 89 },
+  { name: 'Alexis French', age: 8 },
+  { name: 'Heather Sullivan', age: 86 },
+  { name: 'Mr. Andrew Ross', age: 1 },
+  { name: 'Christopher Chaney', age: 89 },
+  { name: 'Michelle Davis', age: 4 }
+]
+Type "it" for more
+
+Q6
+myDB> db.Patients.find(
+|   {
+|     age: { $gt: 50 },
+|     $or: [
+|       { phone_number: { $exists: false } },
+|       { phone_number: null }
+|     ]
+|   },
+|   { _id: 0, name: 1, age: 1, phone_number: 1 }
+| )
+| 
+[
+  { name: 'Peter Brown', age: 82 },
+  { name: 'Jesse James', age: 66 },
+  { name: 'Ariana Shepherd', age: 71 },
+  { name: 'Christopher Chaney', age: 89 },
+  { name: 'Tina Briggs', age: 63 },
+  { name: 'Richard Page', age: 87 },
+  { name: 'Ralph Wilson', age: 72 },
+  { name: 'Richard Hines', age: 54 },
+  { name: 'Maria Daniel', age: 88 },
+  { name: 'Jeremy Hill', age: 60 },
+  { name: 'Raymond Tyler', age: 74 },
+  { name: 'Jennifer Gill', age: 83 },
+  { name: 'Alexandra Shea', age: 85 },
+  { name: 'John Goodman', age: 70 },
+  { name: 'Jasmin Smith', age: 71 },
+  { name: 'Amy Chandler', age: 58 },
+  { name: 'Krystal Zimmerman', age: 53 },
+  { name: 'Kimberly Gonzalez', age: 51 },
+  { name: 'Hunter Drake', age: 55 },
+  { name: 'David Jones', age: 75 }
+]
+Type "it" for more
+
+Q7
+myDB> db.Appointments.find(
+|   {
+|     $and: [
+|       { status: { $in: ["Completed", "Cancelled"] } },
+|       { doctor_id: { $exists: true } }
+|     ]
+|   },
+|   { _id: 0, appointment_id: 1, status: 1, doctor_id: 1 }
+| )
+[
+  {
+    appointment_id: UUID('9824db5d-939b-4044-846d-fa8ae3bedf0f'),
+    doctor_id: UUID('f68336b9-da17-435c-819d-44c9d93a5132'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('d6181dce-db6b-4fbd-9ce9-74a4bda0df66'),
+    doctor_id: UUID('0e8a29b8-28fd-4bc2-accd-d3d285d29117'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('41e76ab5-ab05-4777-84c8-658a70344ffc'),
+    doctor_id: UUID('c40b8acd-4038-4331-ab50-ba624e791fd5'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('cc432e79-96f8-48d2-9246-041bd65960fb'),
+    doctor_id: UUID('54b57321-185c-4bd9-b78a-1539a2302e06'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('eaa9849b-e990-4155-b5d3-8f3801febafb'),
+    doctor_id: UUID('171f140b-350e-4d27-85b8-19971253370d'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('122dd90b-a76e-43fe-825d-1b3af9279e1d'),
+    doctor_id: UUID('c5f3b5b5-952b-4499-b388-4fad2843492b'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('8fd66932-2697-4c92-81a8-9735b816ce78'),
+    doctor_id: UUID('de3803d6-9088-48ae-a855-1e80432326f8'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('72ec3fab-a9e6-4f12-99f5-c4979d2d19ae'),
+    doctor_id: UUID('a2ae59f3-2f9d-4b10-a08f-9a1e6ff33cea'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('e0c50d5e-5646-4f5a-a195-9137ade4edf7'),
+    doctor_id: UUID('71672fb9-4f55-45a3-814b-be458df87a97'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('d3f1408d-e054-4a3a-9137-09fe63882ce2'),
+    doctor_id: UUID('82fedf68-ccbf-457a-bf59-dbdf403fb09d'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('40f16cd0-3cf8-429d-9530-3440d692e586'),
+    doctor_id: UUID('bfb1ded5-1197-4300-8043-a3ef06e876eb'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('1d91e47c-f74e-4026-bc9c-f0bb84a1e564'),
+    doctor_id: UUID('bb9f55d3-2ec2-4001-ae98-864f1d8bfbfe'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('cc6e0e01-d8f6-4c32-a04b-8a4690ce71ef'),
+    doctor_id: UUID('25285772-3d36-49fb-a6d1-368402b1a8ad'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('705ef46b-2fb3-4cf5-b792-a67bcc6b1bb3'),
+    doctor_id: UUID('21138575-ac9a-44d7-8ed2-6e0db151b205'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('f8379ea8-723c-4388-9d52-45b8104a2e5f'),
+    doctor_id: UUID('e16ef261-51fe-4f82-937f-ffca32e34ae7'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('1e4ac0cb-bcc4-48d9-aba7-63cce4f33465'),
+    doctor_id: UUID('a0191b27-7288-4c55-a821-03ecb403e17f'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('6aa8ac4c-40cb-4f0d-8a1d-0073e8168db4'),
+    doctor_id: UUID('c0af5f50-777a-4d90-aa81-a197fe4d4804'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('3777c9dc-17c7-4cba-9ce2-43fb2701d774'),
+    doctor_id: UUID('227aa368-04f4-4ca0-932d-ed0b8c455235'),
+    status: 'Cancelled'
+  },
+  {
+    appointment_id: UUID('d5a5299d-76cf-4e59-b585-cf033204f21a'),
+    doctor_id: UUID('827f09d3-5c4c-4df0-b9ca-af77485b0557'),
+    status: 'Completed'
+  },
+  {
+    appointment_id: UUID('361792a8-1621-4147-bd58-7dc5de9b5b2f'),
+    doctor_id: UUID('010e6000-37a6-435a-8662-d1eef4b2e4ab'),
+    status: 'Completed'
+  }
+]
+Q8
+Type "it" for more
+myDB> Q8: 
+| db.Patients.find(
+| {
+| age: { $not: { $lt: 18}},
+| age: { $not: { $gt: 80}}
+| },
+| {_id: 0, name: 1, age: 1 }  
+| )
+| 
+[
+  { name: 'Jennifer Gross', age: 43 },
+  { name: 'Erika Thompson', age: 39 },
+  { name: 'Kimberly Anderson', age: 27 },
+  { name: 'Terry Wiley', age: 80 },
+  { name: 'James Lopez', age: 10 },
+  { name: 'William Myers', age: 35 },
+  { name: 'Megan Colon', age: 70 },
+  { name: 'Christina Ewing', age: 76 },
+  { name: 'Michael Avila', age: 2 },
+  { name: 'Jennifer Tanner', age: 40 },
+  { name: 'Steven Padilla', age: 80 },
+  { name: 'Vincent Mitchell', age: 72 },
+  { name: 'Lisa Green', age: 4 },
+  { name: 'Lindsey Navarro', age: 51 },
+  { name: 'Jose Jimenez', age: 45 },
+  { name: 'Sean Barnes', age: 43 },
+  { name: 'Marcia Schwartz', age: 43 },
+  { name: 'Kathy Smith', age: 32 },
+  { name: 'Douglas Hawkins', age: 7 },
+  { name: 'Madison Johnson', age: 68 }
+]
+Type "it" for more
+
+Q9a
+myDB> db.Doctors.find({},{_id: 0, name: 1} )
+| .sort({name:1})
+| .limit(5) 
+| 
+[
+  { name: 'Aaron Alexander' },
+  { name: 'Aaron Arias' },
+  { name: 'Aaron Armstrong' },
+  { name: 'Aaron Bailey' },
+  { name: 'Aaron Bond' }
+]
+
+Q9b
+myDB> db.Doctors.find( {}, {_id:0, name:1})
+| .sort({name:1})
+| .skip(5)
+| .limit(3) 
+| 
+[
+  { name: 'Aaron Bryant' },
+  { name: 'Aaron Chan' },
+  { name: 'Aaron Coleman' }
+]
+
+Q10
+myDB> db.Appointments.find({},
+|   {
+|     status: "Completed",
+|     doctor_id: "254d52f1-9156-40ac-8553-0780844b1b7c"
+|   },
+|   { _id: 0, appointment_id: 1, status: 1, doctor_id: 1 }
+| )
+| 
+[
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e25'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e26'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e27'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e28'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e29'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2a'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2b'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2c'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2d'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2e'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e2f'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e30'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e31'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e32'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e33'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e34'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e35'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e36'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e37'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  },
+  {
+    _id: ObjectId('69d2f5b2d7cf733fed294e38'),
+    status: 'Completed',
+    doctor_id: '254d52f1-9156-40ac-8553-0780844b1b7c'
+  }
+]
+Type "it" for more
+
+Q11a
+myDB> db.Patients.find(
+|   { insurance_provider: { $exists: true } },
+|   { _id: 0, name: 1, insurance_provider: 1 }
+| )
+| 
+
+Q11b
+myDB> db.Patients.find(
+|   { insurance_provider: { $exists: false } },
+|   { _id: 0, name: 1 }
+| )
+[
+  { name: 'Peter Brown' },
+  { name: 'Jennifer Gross' },
+  { name: 'Erika Thompson' },
+  { name: 'Kimberly Anderson' },
+  { name: 'Terry Wiley' },
+  { name: 'James Lopez' },
+  { name: 'William Myers' },
+  { name: 'Megan Colon' },
+  { name: 'Christina Ewing' },
+  { name: 'Michael Avila' },
+  { name: 'Jennifer Tanner' },
+  { name: 'Steven Padilla' },
+  { name: 'Vincent Mitchell' },
+  { name: 'Lisa Green' },
+  { name: 'Lindsey Navarro' },
+  { name: 'Jose Jimenez' },
+  { name: 'Laura Ray' },
+  { name: 'Sean Barnes' },
+  { name: 'Marcia Schwartz' },
+  { name: 'Kathy Smith' }
+]
+Type "it" for more
+
+Q11c
+myDB> db.Patients.find(
+|   { insurance_provider: null },
+|   { _id: 0, name: 1, insurance_provider: 1 }
+| )
+| 
+[
+  { name: 'Peter Brown' },
+  { name: 'Jennifer Gross' },
+  { name: 'Erika Thompson' },
+  { name: 'Kimberly Anderson' },
+  { name: 'Terry Wiley' },
+  { name: 'James Lopez' },
+  { name: 'William Myers' },
+  { name: 'Megan Colon' },
+  { name: 'Christina Ewing' },
+  { name: 'Michael Avila' },
+  { name: 'Jennifer Tanner' },
+  { name: 'Steven Padilla' },
+  { name: 'Vincent Mitchell' },
+  { name: 'Lisa Green' },
+  { name: 'Lindsey Navarro' },
+  { name: 'Jose Jimenez' },
+  { name: 'Laura Ray' },
+  { name: 'Sean Barnes' },
+  { name: 'Marcia Schwartz' },
+  { name: 'Kathy Smith' }
+]
+Type "it" for more
+myDB> 
